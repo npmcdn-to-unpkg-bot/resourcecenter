@@ -1,0 +1,25 @@
+$dark-blue: #008bb6;
+$light-blue: #52b5df;
+$black: #283043;
+$green: #e9d93e;
+
+$gray: #eeeeee;
+$white: #FFFFFF;
+$light-gray: #F2F2F2;
+$dark-gray: #798086;
+
+$column: golden-ratio(1em, 3) !default; // Column width
+$gutter: golden-ratio(1em, 3) !default; // Gutter between each two columns
+$fg-column: $column;
+$fg-gutter: $gutter;
+
+//Media Queries
+$medium-screen: em(660) !default;
+$large-screen: em(990) !default;
+$grid-screen: em(1146) !default;
+
+//Omega Reset
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}

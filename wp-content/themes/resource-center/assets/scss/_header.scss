@@ -1,0 +1,107 @@
+body{
+  background: $white;
+  font-family: "proxima-nova",sans-serif;
+}
+
+p{
+  font-size: 1.3em;
+  line-height: 1.5em;
+  font-weight: 400;
+  color: $dark-gray;
+}
+
+h1{
+  font-weight: 700;
+  font-size: 3em;
+  color: $green;
+}
+
+h2{
+  font-weight: 700;
+  font-size: 2.5em;
+  color: $dark-blue;
+}
+
+h3{
+  font-weight: 700;
+  font-size: 2em;
+  color: $light-blue;
+}
+
+h4{
+  font-weight: 700;
+  font-size: 1.7em;
+  color: $green;
+}
+
+::selection {
+  background: $green; /* WebKit/Blink Browsers */
+  color: $white;
+}
+::-moz-selection {
+  background: $green; /* Gecko Browsers */
+  color: $white;
+}
+
+
+ol{
+
+  li{
+    font-size: 1.3em;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: $dark-gray;
+    padding-bottom: 1em;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.site-header{
+  position: fixed;
+  width: 100%;
+  padding: 1em 0;
+  z-index: 9999;
+  background: $white;
+
+  .header-wrap{
+    @include outer-container(90%);
+
+    @include media($medium-screen) {
+      @include outer-container(80%);
+    }
+  }
+
+  .site-branding{
+    @include span-columns(6);
+
+    img{
+      width: 200px;
+    }
+  }
+
+}
+
+
+.site-header-active{
+  background: $white;
+  border-bottom: 2px solid $gray;
+}
+
+.email-signup{
+  @include span-columns(6);
+}

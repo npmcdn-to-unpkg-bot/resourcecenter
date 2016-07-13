@@ -1,0 +1,23 @@
+.site-navigation{
+  @include outer-container(100%);
+  background: $white;
+  display: flex;
+  justify-content: center;
+
+  button:focus {outline:0;}
+
+  .button-group{
+
+    .button{
+      background: $white;
+      border: 0px solid $white;
+      padding: 1.5em 2em;
+      margin: 0;
+      color: $dark-gray;
+    }
+
+    .is-checked{
+      background: $light-gray;
+    }
+  }
+}
