@@ -32,7 +32,7 @@
 			<div class="header-wrap">
 				<div class="site-branding">
 					<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?php echo get_template_directory_uri() . '/assets/img/rs-logo.svg' ?>">
+						<img src="<?php echo get_template_directory_uri() . '/assets/img/proactive-logo-white.svg' ?>">
 					</a>
 				</div><!-- .site-branding -->
 

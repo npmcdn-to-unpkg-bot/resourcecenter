@@ -16,7 +16,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<a class="bottom-logo" href="https://proactive-md.com" rel="home">
-				<img src="<?php echo get_template_directory_uri() . '/assets/img/proactive-logo.svg' ?>">
+				<img src="<?php echo get_template_directory_uri() . '/assets/img/proactive-logo-white.svg' ?>">
 			</a>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

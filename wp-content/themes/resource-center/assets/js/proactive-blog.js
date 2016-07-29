@@ -63,10 +63,10 @@ $('.button-group').each( function( i, buttonGroup ) {
 $(window).on("scroll", function() {
     if($(window).scrollTop() > 50) {
         $(".site-header").addClass("site-header-active");
-        $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/rs-logo.svg");
+        $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo.svg");
     } else {
        $(".site-header").removeClass("site-header-active");
-       $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/rs-logo.svg");
+       $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo-white.svg");
     }
 });
 

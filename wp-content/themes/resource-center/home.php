@@ -84,33 +84,14 @@ get_header(); ?>
 
 							if (sizeOf($cats) > 0) { $post_categories = implode(' ', $cats); } else { $post_categories = 'Not Assigned'; } ?>
 
-							<?php if(get_field('post_type_selection') == "recipe") { ?>
+							<div class="home-box grid-item <?php echo $post_categories; ?>">
+								<div class="home-box-image" style="background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;"></div>
 
-								<div class="home-box grid-item <?php echo $post_categories; ?>">
-									<a href="<?php the_permalink(); ?>">
-										<div class="home-box-image" style="position: relative; background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"><span><?php the_title(); ?></span></div>
-									</a>
+								<div class="home-box-title">
+									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+									<p><?php the_excerpt(); ?></p>
 								</div>
-
-							<?php } elseif(get_field('post_type_selection') == "resource") { ?>
-
-								<a href="<?php the_permalink(); ?>">
-									<div class="home-box grid-item <?php echo $post_categories; ?>" style="background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 300px;">
-									</div>
-								</a>
-
-							<?php } else { ?>
-
-								<div class="home-box grid-item <?php echo $post_categories; ?>">
-									<div class="home-box-image" style="background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;"></div>
-
-									<div class="home-box-title">
-										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-										<p><?php the_excerpt(); ?></p>
-									</div>
-								</div>
-
-							<?php }?>
+							</div>
 
 					<?php endwhile; ?>
 				<?php else : ?>
