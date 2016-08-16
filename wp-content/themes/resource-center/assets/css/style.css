@@ -573,7 +573,7 @@ article {
   .entry-footer span {
     color: #52B5E0;
     display: block;
-    font-weight: 300;
+    font-weight: 700;
     font-size: 1.3em; }
   .entry-footer p {
     font-size: 1em; }
@@ -676,11 +676,11 @@ article {
       .single-featured .single-featured-wrap .single-box a {
         color: #52B5E0;
         font-size: 1.5em;
-        font-weight: 300; }
+        font-weight: 700; }
       .single-featured .single-featured-wrap .single-box .moretag {
         display: block;
-        font-size: 1.2em;
-        color: #46D0B8;
+        font-size: 1em;
+        color: #52B5E0;
         padding-top: 1em; }
       .single-featured .single-featured-wrap .single-box p {
         font-size: 1em; }
