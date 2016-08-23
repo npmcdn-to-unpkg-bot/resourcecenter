@@ -53,7 +53,8 @@ get_header(); ?>
 				<button class="button" data-filter=".Health">Health</button>
 				<button class="button" data-filter=".Medical">Medical</button>
 				<button class="button" data-filter=".Resources">Resources</button>
-				<button class="button" data-filter=".Benefits">Benefits</button>
+				<button class="button" data-filter=".Recipes">Recipes</button>
+				<!-- <button class="button" data-filter=".Benefits">Benefits</button> -->
 			</div>
 		</nav>
 

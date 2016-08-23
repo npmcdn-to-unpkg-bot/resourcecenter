@@ -66,7 +66,7 @@
 									</div>
 									<!--End mc_embed_signup-->
 								</p>
-								<p class="modal-disclaimer">*No spam just industry insites and resrouces.</p>
+								<p class="modal-disclaimer">*No spam just health related articles and resrouces.</p>
 					    </div>
 					  </div>
 					</div>

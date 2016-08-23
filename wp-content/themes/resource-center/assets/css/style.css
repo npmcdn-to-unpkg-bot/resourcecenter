@@ -359,7 +359,7 @@ th {
     color: #798086;
     line-height: 1.5em; }
   .modal .modal-inner .modal-intro {
-    margin-bottom: 1em; }
+    text-align: center; }
   .modal .modal-inner .modal-content {
     color: #798086; }
     @media screen and (min-width: 41.25em) {

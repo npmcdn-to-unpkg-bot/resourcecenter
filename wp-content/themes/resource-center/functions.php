@@ -116,8 +116,6 @@ add_action( 'widgets_init', 'resource_center_widgets_init' );
 function resource_center_scripts() {
 	wp_enqueue_style( 'resource-center-main-styles', get_template_directory_uri() . '/assets/css/style.css' );
 
-	wp_enqueue_script( 'resource-center-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
 	wp_enqueue_script( 'resource-center-proactive', get_template_directory_uri() . '/assets/js/min/proactive-blog-min.js', array('jquery'), '', true );
 
 }

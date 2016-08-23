@@ -875,8 +875,8 @@ function frmFrontFormJS(){
 					return false;
 				}
 
-				d = prepareValueForLikeComparison( d );
-				c = prepareValueForLikeComparison( c );
+				c = prepareLogicValueForLikeComparison( c );
+				d = prepareEnteredValueForLikeComparison( c, d );
 
 				return d.indexOf( c ) != -1;
 			},
@@ -886,8 +886,8 @@ function frmFrontFormJS(){
 					return true;
 				}
 
-				d = prepareValueForLikeComparison( d );
-				c = prepareValueForLikeComparison( c );
+				c = prepareLogicValueForLikeComparison( c );
+				d = prepareEnteredValueForLikeComparison( c, d );
 
 				return d.indexOf( c ) == -1;
 			}
@@ -925,6 +925,26 @@ function frmFrontFormJS(){
 		return b;
 	}
 
+	function prepareLogicValueForLikeComparison( val ) {
+		return prepareValueForLikeComparison( val );
+	}
+
+	function prepareEnteredValueForLikeComparison( logicValue, enteredValue ) {
+		enteredValue = prepareValueForLikeComparison( enteredValue );
+
+		var currentValue = '';
+		if ( jQuery.isArray(enteredValue) ) {
+			for ( var i = 0, l = enteredValue.length; i<l; i++ ) {
+				currentValue = enteredValue[i].toLowerCase();
+				if ( currentValue.indexOf( logicValue ) > -1 ) {
+					enteredValue = logicValue;
+					break;
+				}
+			}
+		 }
+
+		return enteredValue;
+	}
 
 	function prepareValueForLikeComparison( val ) {
 		if ( typeof val === 'string' ) {
@@ -2449,10 +2469,10 @@ function frmFrontFormJS(){
 	}
 
 	function getCallForField( field, all_calcs ) {
-		if ( field.thisField.type == 'checkbox' || field.thisField.type == 'select' ) {
-			field.thisFieldCall = field.thisFieldCall +':checked,select'+ all_calcs.fieldKeys[field.thisFieldId] +' option:selected,'+ field.thisFieldCall+'[type=hidden]';
-		} else if ( field.thisField.type == 'radio' || field.thisField.type == 'scale' ) {
-			field.thisFieldCall = field.thisFieldCall +':checked,'+ field.thisFieldCall +'[type=hidden]';
+		if ( field.thisField.type == 'checkbox' || field.thisField.type == 'radio' || field.thisField.type == 'scale' ) {
+			field.thisFieldCall = field.thisFieldCall +':checked,'+ field.thisFieldCall+'[type=hidden]';
+		} else if ( field.thisField.type == 'select' || field.thisField.type == 'time' ) {
+			field.thisFieldCall = 'select'+ all_calcs.fieldKeys[field.thisFieldId] +' option:selected,'+ field.thisFieldCall+'[type=hidden]';
 		} else if ( field.thisField.type == 'textarea' ) {
 			field.thisFieldCall = field.thisFieldCall + ',textarea'+ all_calcs.fieldKeys[field.thisFieldId];
 		}
@@ -3252,19 +3272,15 @@ function frmFrontFormJS(){
 
     /* Google Tables */
 
-	function prepareGraphTypes( graphs, graphType ) {
+	function generateGoogleTables( graphs, graphType ) {
 		for ( var num = 0; num < graphs.length; num++ ) {
-			prepareGraphs( graphs[num], graphType );
+			generateSingleGoogleTable( graphs[num], graphType );
 		}
 	}
 
-	function prepareGraphs( opts, type ) {
+	function generateSingleGoogleTable( opts, type ) {
 		google.load('visualization', '1.0', {'packages':[type], 'callback': function(){
-			if ( type == 'table' ) {
-				compileGoogleTable( opts );
-			} else {
-				compileGraph( opts );
-			}
+			compileGoogleTable( opts );
 		}});
 	}
 
@@ -3369,6 +3385,38 @@ function frmFrontFormJS(){
         var chart = new google.visualization.Table(document.getElementById('frm_google_table_'+ opts.options.form_id));
         chart.draw( data, opts.graphOpts );
     }
+
+	/** Google Graphs **/
+
+	function generateGoogleGraphs( graphs ) {
+		for ( var i = 0, l=graphs.length; i < l; i++ ) {
+			generateSingleGoogleGraph( graphs[i] );
+		}
+	}
+
+	function generateSingleGoogleGraph( graphData ) {
+		google.load('visualization', '1.0', {'packages':[ graphData.package ], 'callback': function() {
+			compileGoogleGraph( graphData );
+		} } );
+	}
+
+	function compileGoogleGraph( graphData ) {
+		var data = new google.visualization.DataTable();
+		data = google.visualization.arrayToDataTable(graphData.data);
+
+		var chartDiv = document.getElementById('chart_'+ graphData.graph_id);
+		if ( chartDiv === null ) {
+			return;
+		}
+
+		var type = (graphData.type.charAt(0).toUpperCase() + graphData.type.slice(1));
+		if ( type !== 'Histogram' && type !== 'Table' ) {
+			type += 'Chart';
+		}
+
+		var chart = new google.visualization[type]( chartDiv );
+		chart.draw(data, graphData.options);
+	}
 
     function getGraphType(field){
         var type = 'string';
@@ -4121,7 +4169,11 @@ function frmFrontFormJS(){
 				var packages = Object.keys( graphs );
 				//google.load('visualization', '1.0', {'packages':packages});
 				for ( var i = 0; i < packages.length; i++ ) {
-					prepareGraphTypes( graphs[ packages[i] ], packages[i] );
+					if ( packages[i] === 'graphs' ) {
+						generateGoogleGraphs( graphs[ packages[i] ] );
+					} else {
+						generateGoogleTables(graphs[packages[i]], packages[i]);
+					}
 				}
 			} else {
 				setTimeout( frmFrontForm.loadGoogle, 30 );
