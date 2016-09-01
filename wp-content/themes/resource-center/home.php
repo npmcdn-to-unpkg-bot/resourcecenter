@@ -31,13 +31,12 @@ get_header(); ?>
 						$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
 						$thumb_url = $thumb_url_array[0]; ?>
 
-				<div class="single-hero" style="background: linear-gradient(rgba(42, 59, 71, 0.8), rgba(42, 59, 71, 0.8)),
-					              rgba(42, 59, 71, 0.8) url('<?php echo $thumb_url; ?>') no-repeat bottom center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+				<div class="single-hero" style="background: linear-gradient(rgba(53, 53, 53, 0.6), rgba(53, 53, 53, 0.6)),
+					              rgba(53, 53, 53, 0.6) url('<?php echo $thumb_url; ?>') no-repeat top center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: scroll;">
 					<div class="single-hero-wrap">
 						<div class="post-meta">Featured Article</div>
-						<h1 class="entry-title">
-							<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-						</h1>
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+						<a href="<?php the_permalink(); ?>"><button class="learn-more">Read More</button></a>
 					</div>
 				</div>
 
@@ -45,18 +44,6 @@ get_header(); ?>
 		<?php else : ?>
 			<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 		<?php endif; ?>
-
-		<nav class="site-navigation">
-			<div class="button-group filters-button-group">
-				<button class="button is-checked" data-filter="*">Show All</button>
-				<button class="button" data-filter=".Culture">Culture</button>
-				<button class="button" data-filter=".Health">Health</button>
-				<button class="button" data-filter=".Medical">Medical</button>
-				<button class="button" data-filter=".Resources">Resources</button>
-				<button class="button" data-filter=".Recipes">Recipes</button>
-				<!-- <button class="button" data-filter=".Benefits">Benefits</button> -->
-			</div>
-		</nav>
 
 	<main id="main" class="site-main-home" role="main">
 
@@ -66,6 +53,7 @@ get_header(); ?>
 				$args = array(
 					'post_type' => 'post',
 					'cat' => '-2',
+					'posts_per_page' => '-1'
 				);
 
 				$the_query = new WP_Query( $args ); ?>
@@ -76,22 +64,16 @@ get_header(); ?>
 						<?php
 							$thumb_id = get_post_thumbnail_id();
 							$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
-							$thumb_url = $thumb_url_array[0];
-							$cats = array();
-							foreach (get_the_category() as $c) {
-							$cat = get_category($c);
-							array_push($cats, $cat->name);
-							}
+							$thumb_url = $thumb_url_array[0]; ?>
 
-							if (sizeOf($cats) > 0) { $post_categories = implode(' ', $cats); } else { $post_categories = 'Not Assigned'; } ?>
+							<div class="home-box grid-item">
+								<div class="home-box-image" style="background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 130px;"></div>
 
-							<div class="home-box grid-item <?php echo $post_categories; ?>">
-								<div class="home-box-image" style="background: url('<?php echo $thumb_url; ?>') no-repeat center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 200px;"></div>
-
-								<div class="home-box-title">
-									<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+								<div class="home-box-wrap">
+									<a class="home-box-title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 									<p><?php the_excerpt(); ?></p>
 								</div>
+
 							</div>
 
 					<?php endwhile; ?>

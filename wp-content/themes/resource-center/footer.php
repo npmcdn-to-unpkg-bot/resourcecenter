@@ -13,6 +13,8 @@
 
 	</div><!-- #content -->
 
+</div><!-- #page -->
+
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
 			<a class="bottom-logo" href="https://proactive-md.com" rel="home">
@@ -20,10 +22,6 @@
 			</a>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
-
-</div><!-- #page -->
-
-
 
 <?php wp_footer(); ?>
 

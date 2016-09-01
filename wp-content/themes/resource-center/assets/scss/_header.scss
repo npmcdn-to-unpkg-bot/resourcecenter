@@ -3,6 +3,10 @@ body{
   font-family: "proxima-nova",sans-serif;
 }
 
+.site{
+    @include outer-container(100%);
+}
+
 p{
   font-size: 1.3em;
   line-height: 1.5em;
@@ -11,25 +15,25 @@ p{
 }
 
 h1{
-  font-weight: 700;
+  font-weight: 100;
   font-size: 3em;
   color: $green;
 }
 
 h2{
-  font-weight: 700;
+  font-weight: 100;
   font-size: 2.5em;
   color: $dark-blue;
 }
 
 h3{
-  font-weight: 700;
+  font-weight: 100;
   font-size: 2em;
   color: $light-blue;
 }
 
 h4{
-  font-weight: 700;
+  font-weight: 100;
   font-size: 1.7em;
   color: $green;
 }
@@ -56,6 +60,17 @@ ol{
 
 }
 
+ul{
+
+  li{
+    font-size: 1.3em;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: $dark-gray;
+  }
+
+}
+
 
 
 
@@ -72,35 +87,33 @@ ol{
 
 
 .site-header{
-  position: fixed;
-  width: 100%;
-  padding: 1em 0;
-  z-index: 9999;
+  background: $light-gray;
 
-  .header-wrap{
-    @include outer-container(90%);
+  @include media($medium-screen) {
+    @include span-columns(3, block-collapse);
+    position: fixed;
+    height: 100vh;
+  }
 
-    @include media($medium-screen) {
-      @include outer-container(80%);
-    }
+  @include media($large-screen) {
+    @include span-columns(2, block-collapse);
   }
 
   .site-branding{
-    @include span-columns(6);
+    padding: 1em;
+    width: 37%;
 
-    img{
-      width: 200px;
+    @include media($medium-screen) {
+      width: 100%;
+    }
+
+    @include media($large-screen) {
+      padding: 2em
     }
   }
 
 }
 
-
-.site-header-active{
-  background: $white;
-  border-bottom: 2px solid $gray;
-}
-
 .email-signup{
-  @include span-columns(6);
+  padding: 2em;
 }

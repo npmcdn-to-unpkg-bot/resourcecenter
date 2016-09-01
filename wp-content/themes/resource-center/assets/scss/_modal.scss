@@ -33,23 +33,17 @@
   }
 
   .modal-trigger {
-    padding: 0.5em;
+    padding: 0.7em;
     background: $light-blue;
     color: $white;
-    text-transform: uppercase;
     border-radius: 5px;
     text-align: center;
     font-weight: 400;
     font-size: 0.9em;
-    float: right;
-
-    @include media($large-screen) {
-      width: 25%;
-    }
   }
 
   .modal-trigger:hover{
-    background: $dark-blue;
+    background: $light-blue;
   }
 
   .modal-fade-screen { // overlay
@@ -171,7 +165,6 @@
 }
 
 // Based on code by Kasper Mikiewicz
-
 
 .modal-disclaimer{
   text-align: center;

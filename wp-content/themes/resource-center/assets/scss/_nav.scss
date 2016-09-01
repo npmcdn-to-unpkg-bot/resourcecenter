@@ -1,23 +1,79 @@
 .site-navigation{
-  @include outer-container(100%);
-  background: $white;
-  display: flex;
-  justify-content: center;
+  display: none;
 
-  button:focus {outline:0;}
-
-  .button-group{
-
-    .button{
-      background: $white;
-      border: 0px solid $white;
-      padding: 1.5em 2em;
-      margin: 0;
-      color: $dark-gray;
-    }
-
-    .is-checked{
-      background: $light-gray;
-    }
+  ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
+
+  ul li{
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1em;
+  }
+
+  ul li a{
+    color: $dark-blue;
+    text-decoration: none;
+    padding: 1.5em 0;
+    margin: .3em 0;
+    display: block;
+  }
+
+  a:hover{
+    background: $white;
+  }
+
+  @include media($medium-screen) {
+    display: block;
+  }
+}
+
+.active-menu{
+  display: block;
+}
+
+
+
+.menu-btn {
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 1.5em;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+	@include media($medium-screen) {
+    display: none;
+  }
+}
+
+.menu-btn.toggled span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-btn.toggled span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.toggled span:last-child {
+	transform: translateY(-10px) rotate(-45deg);
+}
+
+.menu-btn span {
+  display: block;
+  background: $black;
+  width: 25px;
+  height: 4px;
+  border-radius: 3px;
+  transform-origin: center;
+  transition: 0.3s ease;
+}
+
+.menu-btn span:nth-child(2) {
+  margin: 4px 0;
 }

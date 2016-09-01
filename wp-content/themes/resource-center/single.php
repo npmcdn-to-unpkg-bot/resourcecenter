@@ -22,8 +22,8 @@ get_header(); ?>
 				$thumb_url = $thumb_url_array[0];
 				?>
 
-			<div class="single-hero" style="background: linear-gradient(rgba(42, 59, 71, 0.8), rgba(42, 59, 71, 0.8)),
-			              rgba(42, 59, 71, 0.8) url('<?php echo $thumb_url; ?>') no-repeat bottom center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+			<div class="single-hero" style="background: linear-gradient(rgba(53, 53, 53, 0.6), rgba(53, 53, 53, 0.6)),
+			              rgba(53, 53, 53, 0.6) url('<?php echo $thumb_url; ?>') no-repeat top center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-attachment: scroll;">
 				<div class="single-hero-wrap">
 					<h1 class="entry-title">
 						<?php the_title(); ?>
@@ -76,7 +76,7 @@ get_header(); ?>
 					'post_type' => 'post',
 					'post__not_in' => array( $postid ),
 					'posts_per_page' => 3,
-					// 'category_name' => $cat_name,
+					'category_name' => $cat_name,
 				);
 
 				$the_query = new WP_Query( $args ); ?>

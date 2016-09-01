@@ -4,8 +4,10 @@ $(function() {
   $("#modal-1").on("change", function() {
     if ($(this).is(":checked")) {
       $("body").addClass("modal-open");
+      $(".grid").css("z-index", "-1");
     } else {
       $("body").removeClass("modal-open");
+      $(".grid").css("z-index", "0");
     }
   });
 
@@ -18,9 +20,11 @@ $(function() {
   });
 });
 
-
-
-
+$('.menu-btn').on('click', function(e) {
+  e.preventDefault();
+  $(this).toggleClass('toggled');
+  $(".site-navigation").toggleClass('active-menu');
+});
 
 
 
@@ -60,15 +64,15 @@ $('.button-group').each( function( i, buttonGroup ) {
 
 
 
-$(window).on("scroll", function() {
-    if($(window).scrollTop() > 50) {
-        $(".site-header").addClass("site-header-active");
-        $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo.svg");
-    } else {
-       $(".site-header").removeClass("site-header-active");
-       $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo-white.svg");
-    }
-});
+// $(window).on("scroll", function() {
+//     if($(window).scrollTop() > 50) {
+//         $(".site-header").addClass("site-header-active");
+//         $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo.svg");
+//     } else {
+//        $(".site-header").removeClass("site-header-active");
+//        $(".site-branding img").attr("src", "/wp-content/themes/resource-center/assets/img/proactive-logo-white.svg");
+//     }
+// });
 
 
 

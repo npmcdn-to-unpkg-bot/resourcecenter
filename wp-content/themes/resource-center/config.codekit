@@ -1772,6 +1772,15 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/category.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/category.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/comments.php": {
 		"fileType": 8192,
 		"ignore": 0,
